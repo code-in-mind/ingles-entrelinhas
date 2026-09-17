@@ -1,0 +1,84 @@
+name: Gerar o livro
+
+# Quando este workflow roda:
+#
+# 1. Automaticamente, a cada push na main.
+#    -> gera EPUB + PDF + DOCX e anexa como "artefato" do workflow,
+#       baixável na aba Actions por 90 dias. Bom para conferir a cada
+#       mudança, sem precisar rodar nada localmente.
+#
+# 2. Quando você cria uma tag de versão (ex.: v1.0.0, v1.1.0).
+#    -> além de gerar os três formatos, publica uma GitHub Release com
+#       os três arquivos anexados. Essa é a "edição" oficial do livro:
+#       cada tag = uma versão do livro que dá para linkar e baixar.
+#
+# 3. Manualmente, pelo botão "Run workflow" na aba Actions — para quando
+#    você quiser gerar o livro sem mudar código nem criar tag.
+#
+# Não filtramos por caminho de arquivo (paths) de propósito: quando o
+# gatilho é uma tag, o GitHub às vezes não consegue calcular quais
+# arquivos mudaram, e o workflow simplesmente não dispararia. Rodar
+# sempre custa uns 2-3 minutos a mais por push; preferimos isso a uma
+# Release que silenciosamente não sai.
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write   # necessário só para anexar arquivos numa Release
+
+jobs:
+  build-book:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar Poetry
+        run: pipx install poetry
+
+      - name: Instalar dependências Python
+        run: poetry install --no-root
+
+      # pandoc já vem no runner do GitHub; o PDF via xelatex precisa do
+      # LaTeX, que não vem — por isso instalamos aqui. Isso é o que leva
+      # a maior parte do tempo deste workflow (uns 2–3 minutos).
+      - name: Instalar LaTeX (para o PDF)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            texlive-xetex texlive-fonts-recommended texlive-latex-extra lmodern
+
+      - name: Gerar flashcards a partir do YAML
+        run: poetry run python scripts/build_flashcards.py
+
+      - name: Montar o livro (EPUB + PDF + DOCX)
+        run: poetry run python scripts/build_book.py --all
+
+      - name: Guardar como artefato do workflow
+        uses: actions/upload-artifact@v4
+        with:
+          name: livro
+          path: |
+            livro/saida/livro.epub
+            livro/saida/livro.pdf
+            livro/saida/livro.docx
+          retention-days: 90
+
+      # Só roda quando o push é de uma tag (ex.: v1.0.0) — cria a edição
+      # oficial, pública, com link fixo para baixar.
+      - name: Publicar GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            livro/saida/livro.epub
+            livro/saida/livro.pdf
+            livro/saida/livro.docx
+          generate_release_notes: true

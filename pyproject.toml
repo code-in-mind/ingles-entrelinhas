@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "ingles-entrelinhas"
+version = "0.1.0"
+description = "Curso de inglês geral (A1–C1) em Zettelkasten: site MkDocs Material + livro"
+authors = ["Lorena de Castro <LorenadeCastro@users.noreply.github.com>", "Gabriel Dornas <gabrielbdornas@users.noreply.github.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+mkdocs-material = "^9.5"
+pymdown-extensions = "^10.7"
+pyyaml = "^6.0"
+genanki = "^0.13"
+yt-dlp = "^2024.8.6"
+
+[tool.poetry.group.dev.dependencies]
+mkdocs-git-revision-date-localized-plugin = "^1.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

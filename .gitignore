@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.venv/
+site/
+livro/saida/
+fontes/brutas/
+docs/media/*.mp3
+docs/media/*.m4a
+.DS_Store

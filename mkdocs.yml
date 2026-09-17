@@ -1,0 +1,146 @@
+site_name: Inglês Entrelinhas
+site_description: Curso de inglês geral do A1 ao C1
+site_author: Lorena de Castro
+site_url: https://code-in-mind.github.io/ingles-entrelinhas/
+repo_url: https://github.com/code-in-mind/ingles-entrelinhas
+repo_name: code-in-mind/ingles-entrelinhas
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: pt-BR
+  icon:
+    logo: material/notebook-multiple
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.tabs.link
+    - content.tooltips
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Modo escuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+
+plugins:
+  - search:
+      lang:
+        - pt
+        - en
+  - tags
+
+hooks:
+  - scripts/zettel_hooks.py
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.keys
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/flashcards.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/code-in-mind
+    - icon: fontawesome/brands/github
+      link: https://github.com/LorenadeCastro
+      name: Lorena de Castro
+    - icon: fontawesome/brands/github
+      link: https://github.com/gabrielbdornas
+      name: Gabriel Dornas
+    - icon: fontawesome/brands/youtube
+      link: https://youtube.com/@ingles-em-notas
+
+nav:
+  - Início:
+      - index.md
+      - como-usar.md
+      - metodo-zettelkasten.md
+  - Módulos:
+      - modulos/index.md
+      - A1 · 01 Fundações:
+          - modulos/01-fundacoes/index.md
+          - modulos/01-fundacoes/exercicios.md
+          - modulos/01-fundacoes/flashcards.md
+      - A1 · 02 Rotina e presente:
+          - modulos/02-rotina-presente/index.md
+      - A2 · 03 Passado:
+          - modulos/03-passado/index.md
+      - A2 · 04 Futuro e planos:
+          - modulos/04-futuro/index.md
+      - B1 · 05 Present Perfect:
+          - modulos/05-present-perfect/index.md
+          - modulos/05-present-perfect/flashcards.md
+      - B1 · 06 Condicionais:
+          - modulos/06-condicionais/index.md
+      - B2 · 07 Passiva e discurso indireto:
+          - modulos/07-passiva-reported/index.md
+      - B2 · 08 Phrasal verbs e colocações:
+          - modulos/08-phrasal-verbs/index.md
+      - C1 · 09 Registro e nuance:
+          - modulos/09-registro-nuance/index.md
+  - Notas:
+      - notas/index.md
+      - notas/202609161430-present-perfect-vs-past-simple.md
+      - notas/202609161502-for-vs-since.md
+      - notas/202609161535-verbo-to-be.md
+      - notas/202609161610-artigos-a-an-the.md
+  - Podcasts:
+      - podcasts/index.md
+      - podcasts/ep01-why-english-feels-hard.md
+  - Índices:
+      - indice/tags.md
+      - indice/mapa-a1.md

@@ -1,0 +1,47 @@
+/* Único override do tema: os cartões viráveis, que o Material não traz nativo.
+   Tudo o mais usa componentes nativos (admonition, details, tabs, tags). */
+
+.flashcards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: .8rem;
+  margin: 1.2rem 0;
+}
+
+.flashcard {
+  position: relative;
+  min-height: 130px;
+  cursor: pointer;
+  perspective: 1000px;
+  outline: none;
+}
+
+.flashcard__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  border-radius: .3rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--md-code-bg-color);
+  backface-visibility: hidden;
+  transition: transform .45s;
+}
+
+.flashcard__back {
+  transform: rotateY(180deg);
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  border-color: transparent;
+}
+
+.flashcard.virado .flashcard__front { transform: rotateY(180deg); }
+.flashcard.virado .flashcard__back  { transform: rotateY(360deg); }
+
+.flashcard:focus-visible .flashcard__face {
+  border-color: var(--md-accent-fg-color);
+}

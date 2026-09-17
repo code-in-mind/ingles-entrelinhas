@@ -1,0 +1,33 @@
+modulo: 01-fundacoes
+titulo: Fundações
+nivel: A1
+cartoes:
+  - frente: "I ___ a teacher."
+    verso: "am"
+    exemplo: "I am a teacher. / I'm a teacher."
+    nota: "202609161535"
+    tags: [verbo-to-be]
+  - frente: "She ___ from Brazil."
+    verso: "is"
+    exemplo: "She is from Brazil. / She's from Brazil."
+    nota: "202609161535"
+    tags: [verbo-to-be]
+  - frente: "They ___ my friends."
+    verso: "are"
+    exemplo: "They are my friends. / They're my friends."
+    nota: "202609161535"
+    tags: [verbo-to-be]
+  - frente: "___ hour (a / an)"
+    verso: "an hour"
+    exemplo: "O 'h' é mudo: o som inicial é de vogal, então vai 'an'."
+    nota: "202609161610"
+    tags: [artigos]
+  - frente: "___ university (a / an)"
+    verso: "a university"
+    exemplo: "Escreve-se com 'u', mas o som é /ju/ — som de consoante, então 'a'."
+    nota: "202609161610"
+    tags: [artigos]
+  - frente: "to introduce yourself"
+    verso: "se apresentar"
+    exemplo: "Let me introduce myself: I'm Lorena."
+    tags: [vocabulario]

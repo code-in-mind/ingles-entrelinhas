@@ -1,0 +1,24 @@
+modulo: 05-present-perfect
+titulo: Present Perfect
+nivel: B1
+cartoes:
+  - frente: "I ___ (live) here since 2020."
+    verso: "have lived"
+    exemplo: "'since' marca um fio que continua até agora — Present Perfect."
+    nota: "202609161430"
+    tags: [present-perfect]
+  - frente: "I ___ (live) in London in 2015."
+    verso: "lived"
+    exemplo: "Ano fechado no passado, assunto encerrado — Past Simple."
+    nota: "202609161430"
+    tags: [past-simple]
+  - frente: "for ou since? ___ three years"
+    verso: "for three years"
+    exemplo: "'for' + duração; 'since' + ponto de partida."
+    nota: "202609161502"
+    tags: [for-since]
+  - frente: "for ou since? ___ Monday"
+    verso: "since Monday"
+    exemplo: "Segunda-feira é um ponto no tempo, não uma duração."
+    nota: "202609161502"
+    tags: [for-since]

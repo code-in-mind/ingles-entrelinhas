@@ -1,0 +1,27 @@
+# Fonte única da identidade do projeto (nome, slug, autoria, organização).
+#
+# Para renomear ou trocar organização no futuro:
+#   1. Edite os valores abaixo.
+#   2. Rode: poetry run python scripts/apply_site_identity.py
+#   3. Rode: git mv <pasta-antiga> <novo repo_slug>   (se for renomear o repositório também)
+#
+# O script atualiza mkdocs.yml, livro/metadata.yaml, pyproject.toml, README.md,
+# .github/CODEOWNERS e as páginas do site que citam o nome. Os scripts Python
+# (build_book.py, export_anki.py) leem este arquivo em tempo de execução —
+# nunca precisam ser editados à mão.
+
+name: "Inglês Entrelinhas"
+tagline: "Do A1 ao C1, uma ideia de cada vez"
+repo_slug: "ingles-entrelinhas"
+
+# Organização do GitHub que hospeda o projeto (não é a conta pessoal de ninguém).
+github_org: "code-in-mind"
+
+# As duas pessoas do projeto. A primeira da lista entra como autor principal
+# nos metadados do livro; as duas entram no pyproject.toml, no CODEOWNERS
+# e na seção "Equipe" do README.
+maintainers:
+  - handle: "LorenadeCastro"
+    nome: "Lorena de Castro"
+  - handle: "gabrielbdornas"
+    nome: "Gabriel Dornas"

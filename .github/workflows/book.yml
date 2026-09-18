@@ -46,14 +46,15 @@ jobs:
       - name: Instalar dependências Python
         run: poetry install --no-root
 
-      # pandoc já vem no runner do GitHub; o PDF via xelatex precisa do
-      # LaTeX, que não vem — por isso instalamos aqui. Isso é o que leva
-      # a maior parte do tempo deste workflow (uns 2–3 minutos).
-      - name: Instalar LaTeX (para o PDF)
+      # O Pandoc não vem pré-instalado no runner (apesar da documentação
+      # antiga do GitHub sugerir que sim) — por isso instalamos aqui junto
+      # com o LaTeX, que o PDF via xelatex precisa. É o que leva a maior
+      # parte do tempo deste workflow (uns 2-3 minutos).
+      - name: Instalar Pandoc e LaTeX (para o livro)
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends \
-            texlive-xetex texlive-fonts-recommended texlive-latex-extra lmodern
+            pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra lmodern
 
       - name: Gerar flashcards a partir do YAML
         run: poetry run python scripts/build_flashcards.py
